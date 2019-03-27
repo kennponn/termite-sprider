@@ -1,7 +1,6 @@
 # termite-sprider
 :ant:采集京东，代码未完成只留做仓库方便多地开发:lemon::lemon:
-
-[code]
+```sql
 /*
 Navicat MySQL Data Transfer
 
@@ -42,4 +41,6 @@ CREATE TABLE `product` (
   PRIMARY KEY (`productId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-[/code]
+```
+
+
