@@ -11,11 +11,12 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@MapperScan("fun.termite.mapper")
+@MapperScan("fun.sprider.mapper")
 public class MybatisConfig {
+	
 	@Value("com.mysql.jdbc.Driver")
 	private String driverClass;
-	@Value("jdbc:mysql://localhost:3306/springsecurity")
+	@Value("jdbc:mysql://localhost:3306/termite_sprider")
 	private String url;
 	@Value("root")
 	private String username;

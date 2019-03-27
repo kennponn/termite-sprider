@@ -1,4 +1,4 @@
-package fun.sprider.Entity;
+package fun.sprider.entity;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 public class Product {
 	private String productId;
 	private String productName;
-	private Map<String,Map<String,String>> productSummary;
+	private String productSummary;
 	private String img;
 	private Double price;
 	

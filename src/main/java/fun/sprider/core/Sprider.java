@@ -16,16 +16,21 @@ import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.context.annotation.Scope;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import fun.sprider.Entity.Product;
+import fun.sprider.entity.Product;
 import fun.sprider.util.ProductUtil;
-
+@Component
+@Scope("prototype")
 public class Sprider {
 	private static final String URL = "https://list.jd.com/list.html?cat=";
 	private List<Product> products = new ArrayList<>();
+	@Async
 	public Product doSprider(String url) throws ClientProtocolException, IOException {
 		CloseableHttpClient client = HttpClients.createDefault();
 		HttpGet request = new HttpGet(url);
@@ -44,8 +49,7 @@ public class Sprider {
 			}
 			ext.put(summaryHtml.get(i).select("h3").text(), content);
 		}
-		p.setProductSummary(ext);
-		System.out.println(summaryHtml.size());
+		p.setProductSummary(new Gson().toJson(ext));
 		p.setImg(document.select("img#spec-img").attr("data-origin"));
 		Elements elements = document.select(".itemInfo-wrap");
 		p.setProductName(elements.select("div.sku-name").text());
